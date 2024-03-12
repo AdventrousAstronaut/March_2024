@@ -1,0 +1,18 @@
+// 1. Tooltips not working ?
+    // check this ->
+    https://stackoverflow.com/questions/20545745/bootstrap-tooltip-not-showing-up
+
+// 2. 輪播圖無法找到圖片的位置
+    // 搜尋圖片來源
+    // 顯示 無法找到 view/static
+    // 從 static\assets\images\wallhaven-n65xpq.jpg
+    // 改為 \static\assets\images\wallhaven-n65xpq.jpg 這樣他就知道不是 view folder 底下的資料
+
+// 3. 資料的引入 trace back to parent
+    // Relative paths make use of two special symbols, a dot (.) and a double dot (..)
+
+// 4. wamp 下的 PHP 設置
+    // 去wamp server folder 下找 PPHP.exe "C:\wamp64\bin\php\php8.2.13\php.exe"
+    // setting.json 設置路徑
+    // https://stackoverflow.com/questions/40287927/php-executable-not-found-install-php-7-and-add-it-to-your-path-or-set-the-php-e
+    // 下載 xampp 在 preferences 中設置 executable path 並且編輯 環境變數
