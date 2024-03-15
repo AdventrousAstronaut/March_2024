@@ -1,0 +1,52 @@
+body{
+    background: url("./../../assets/images/office/wallhaven-96edrd.jpg");
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
+}
+
+
+.loginCard {
+    padding: 0px 20px 20px 20px;
+    /* 置中於 document */
+    margin: 200px auto;
+    width: fit-content;
+    /* border: 2px solid red; */
+
+    /* 圓角*/
+    border-radius: 10%;
+    box-shadow: 0px 0px 4px 0px grey;
+
+    background-color: aliceblue;
+
+}
+
+.loginCard .logo{
+    width: 80px;
+    height: 80px;
+    /* border: 2px solid red; */
+
+    /* 位置 */
+    margin: 0 auto;
+    transform: translateY(-30px);
+
+    /* 切圓形 + 陰影 */
+    border-radius: 50%;
+    background-color: bisque;
+    box-shadow: 0px 0px 4px 0px;
+}
+
+.loginCard .logo img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.loginCard input {
+    margin: 0px 0px 10px 0px;
+}
+
+.loginCard form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
