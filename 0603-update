@@ -1,0 +1,58 @@
+// change in... creator html
+  try {
+    updateStories(data);
+  } catch (error) {
+    console.error(error);
+  }
+after response.json
+
+// in updateStories... 
+  function updateStories(tmp){ // json file
+      item = {
+        "title": tmp["title"],
+        "From_To": tmp["From_To"],
+        "image": tmp["image_urls"][0],
+        "signature" : tmp["uid"],
+        "stories": {}
+      }
+      for (let i = 0; i < tmp["speech_urls"].length; i++) {
+          item["stories"][i] = {
+              "soundtrack": tmp["speech_urls"][i],
+              "text": tmp["paragraphs"][i],
+              "translation": tmp["translations"][i],
+              "image": tmp["image_urls"][i]
+          };
+      }
+      const path = "/private/" + tmp["uid"] + "/mystories/" + tmp["storyToken"];
+      firebase.database().ref(path).set(item);
+  }
+
+// use template...
+    data = {
+        "title": "兔子在天上飛1",
+        "From_To": "Eng:Chinese",
+        "image_urls": ["https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/Rabbit%20flying%20in%20the%20sky%2Fimage_0.jpg?alt=media&token=95529af0-33be-4682-a0d6-5c5f13a2946c","https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/Rabbit%20flying%20in%20the%20sky%2Fimage_0.jpg?alt=media&token=95529af0-33be-4682-a0d6-5c5f13a2946c","https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/Rabbit%20flying%20in%20the%20sky%2Fimage_0.jpg?alt=media&token=95529af0-33be-4682-a0d6-5c5f13a2946c",
+        "https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/Rabbit%20flying%20in%20the%20sky%2Fimage_0.jpg?alt=media&token=95529af0-33be-4682-a0d6-5c5f13a2946c"
+        ],
+        "paragraphs": [
+            "一只小兔子总是夢想著飞行，所以他制作了翼膜，然後跳下地面。",
+            "兔子一飛一舞，高飞到云海上，發現了天空中的其他生物。",
+            "兔子感謝自己制作的翼膜，現在可以飞上天空。",
+            "但是他知道，有時候也要返回地面，繼續努力成長。"
+        ],
+        "translations": [
+            "A little rabbit always dreamed of flying, so he made a wing membrane and jumped off the ground.",
+            "The rabbit fluttered and flew to the sea of ​​clouds and found other creatures in the sky.",
+            "The rabbit thanks to the wing membrane he made, and now he can fly into the sky.",
+            "But he knew that sometimes he had to return to the ground and continue to work hard."
+        ],
+        "speech_urls": [
+            "https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/audio%2Fdramatic-background-music-for-short-videos-1-minute-little-alicia-155718.mp3?alt=media&token=92424fd6-1d15-4956-a21d-2e2860b38a0a",
+            "https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/audio%2Fdramatic-background-music-for-short-videos-1-minute-little-alicia-155718.mp3?alt=media&token=92424fd6-1d15-4956-a21d-2e2860b38a0a",
+            "https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/audio%2Fdramatic-background-music-for-short-videos-1-minute-little-alicia-155718.mp3?alt=media&token=92424fd6-1d15-4956-a21d-2e2860b38a0a",
+            "https://firebasestorage.googleapis.com/v0/b/mywebsite-vivian.appspot.com/o/audio%2Fdramatic-background-music-for-short-videos-1-minute-little-alicia-155718.mp3?alt=media&token=92424fd6-1d15-4956-a21d-2e2860b38a0a"
+        ],
+        "uid": uid,
+        "storyToken": storyToken
+    }
+    return jsonify(data)
